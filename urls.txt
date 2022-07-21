@@ -1,0 +1,6 @@
+https://someonewhocares.org/hosts/zero/hosts
+https://raw.githubusercontent.com/notracking/hosts-blocklists/master/hostnames.txt
+https://raw.githubusercontent.com/jerryn70/GoodbyeAds/master/Hosts/GoodbyeAds.txt
+https://energized.pro/ultimate/formats/hosts
+https://hosts.oisd.nl/
+https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews/hosts

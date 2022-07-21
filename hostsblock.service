@@ -1,0 +1,9 @@
+[Unit]
+Description=Update hosts blocking
+After=network.target network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/bin/bash -c "xargs -n 1 curl --silent < /etc/hosts.d/*.txt &> /dev/stdout | sed '/^[ \t]*#/d' | sed -e 's/[[:space:]]\+/ /g' | sort -u > /etc/hosts"
+RemainAfterExit=false
