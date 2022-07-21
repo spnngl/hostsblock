@@ -4,10 +4,17 @@ Simple systemd service & timer to automatically update hosts blocking file.
 
 ## Configuration
 
-Put a .txt file in /etc/hosts.d folder with one url by line to use.
+### Local
+
+Add your .hosts file(s) to local `etc/hosts.d/` folder. Use hosts file
+formatting.
+
+### Web
+
+Put a .txt file in `/etc/hosts.d` folder with one url by line to use.
+See: `etc/hosts.d/urls.txt` file
 
 ## Install
 
-1. Put hostsblock.{timer,service} in /etc/systemd/system
-2. `systemctl daemon-reload`
-3. `systemctl enable --now hostsblock.timer`
+A makefile is available to simplify things, do a `make install`.
+Do not forget to `systemctl daemon-reload`.
