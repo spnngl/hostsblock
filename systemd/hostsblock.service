@@ -5,7 +5,12 @@ Wants=network-online.target
 
 [Service]
 Type=oneshot
-ExecStart=/bin/bash -c "xargs -n 1 curl --fail --silent < /etc/hosts.d/*.txt &> /dev/stdout | sed '/^[ \t]*#/d' | sed -e 's/[[:space:]]\+/ /g' | sort -u > /etc/hosts"
+# Get static hosts files
+ExecStart=/bin/bash -c "cat %E/hosts.d/*.hosts > %T/static.hosts.tmp"
+# Get http(s) hosts files
+ExecStart=/bin/bash -c "xargs -n 1 curl --fail --silent < %E/hosts.d/*.txt &> %T/web.hosts.tmp"
+# Concatenate
+ExecStart=/bin/bash -c "cat %T/*.hosts.tmp | sed '/^[ \t]*#/d' | sed -e 's/[[:space:]]\+/ /g' | sort -u > %E/hosts"
 RemainAfterExit=false
 
 # Protections settings
